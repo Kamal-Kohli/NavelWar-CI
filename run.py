@@ -202,4 +202,3 @@ if __name__ == "__main__":
                 break
         else:
             print("Invalid grid size. Enter a value between 5 and 10.")
-            
