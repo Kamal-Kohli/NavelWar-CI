@@ -142,6 +142,11 @@ def comp_turn(player_board, size):
             break
 
 
+# Function to get user feedback
+def get_feedback():
+    return input("Provide your feedback on the game: ")
+
+
 
 # Function to play the Battleship game
 def play_battleship(size, uname):
