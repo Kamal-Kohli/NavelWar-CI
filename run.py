@@ -84,3 +84,59 @@ def place_ship(board, ship_size):
                 for i in range(ship_size):
                     board[x+i][y] = 'S'
                 break
+
+
+# Function to play the Battleship game
+def play_battleship(size, uname):
+    p_board = init_board(size)
+    c_board = init_board(size)
+    ships = [5, 3, 3, 2, 2]
+    for s in ships:
+        place_ship(p_board, s)
+        place_ship(c_board, s)
+    # Calculate total shots based on grid size
+    total_shots = 22 + (size - 5) * 6
+    # Maximum shots based on grid size
+    remaining_shots = total_shots
+    print(f"Welcome {uname} to Battleship war!")
+    print(GAME_INSTRUCTIONS)
+    print_boards(p_board, c_board, size, hide_comp=True)
+    # Decrease remaining shots after each player turn
+    while remaining_shots > 0:
+        print(f"Remaining Shots: {remaining_shots}")
+        player_turn(c_board, size)
+        remaining_shots -= 1
+
+        print_boards(p_board, c_board, size, hide_comp=True)
+        if is_game_over(c_board):
+            print("Congrats, You win! All enemy ships are down.")
+            feedback = get_feedback()
+            print("Thank you for playing!")
+            break
+
+        comp_turn(p_board, size)
+        print_boards(p_board, c_board, size, hide_comp=True)
+        if is_game_over(p_board):
+            print("Game over! The CPU sank all your ships. You lose!")
+            feedback = get_feedback()
+            print("Thank you for playing!")
+            break
+
+    if remaining_shots == 0:
+        print("Out of shots! The battle is a draw.")
+        feedback = get_feedback()
+        print("Thank you for playing!")
+
+
+if __name__ == "__main__":
+    while True:
+        size = int(input("Enter grid size (5-10): "))
+        if 5 <= size <= 10:
+            username = input("Enter your Name Captain: ")
+            play_battleship(size, username)
+            play_again = input("Play another round? (yes/no):").lower()
+            if play_again == 'no':
+                print("Thank you for playing!")
+                break
+        else:
+            print("Invalid grid size. Enter a value between 5 and 10.")
