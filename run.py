@@ -58,7 +58,7 @@ def print_boards(player, computer, size, hide_comp=True):
         ] if hide_comp else computer[i]
         row_str = f"{i}  {' '.join(player[i])}   {i}  {' '.join(comp_row)}"
         print(row_str)
-
+        
 
 # Function to check if the game is over
 def is_game_over(board):
@@ -89,6 +89,21 @@ def place_ship(board, ship_size):
                 for i in range(ship_size):
                     board[x+i][y] = 'S'
                 break
+
+
+# Function to convert player input to board coordinates
+def conv_input(input_str, size):
+    try:
+        letter = input_str[0].upper()
+        num = int(input_str[1:])
+        if 'A' <= letter <= chr(65 + size - 1) and 0 <= num < size:
+            x = num
+            y = ord(letter) - ord('A')
+            return x, y
+        else:
+            return None, None
+    except (ValueError, IndexError):
+        return None, None
 
 
 # Function to play the Battleship game
