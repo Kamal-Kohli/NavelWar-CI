@@ -58,3 +58,29 @@ def print_boards(player, computer, size, hide_comp=True):
         ] if hide_comp else computer[i]
         row_str = f"{i}  {' '.join(player[i])}   {i}  {' '.join(comp_row)}"
         print(row_str)
+
+
+# Function to place ships on the board
+def place_ship(board, ship_size):
+    """
+    Randomly places a ship of the given size on the game board.
+
+    :param board: The game board to place the ship on.
+    :param ship_size: The size of the ship.
+    """
+    while True:
+        o = random.choice(['h', 'v'])
+        if o == 'h':
+            x = random.randint(0, len(board) - 1)
+            y = random.randint(0, len(board[0]) - ship_size)
+            if all(board[x][y+i] == '.' for i in range(ship_size)):
+                for i in range(ship_size):
+                    board[x][y+i] = 'S'
+                break
+        else:
+            x = random.randint(0, len(board) - ship_size)
+            y = random.randint(0, len(board[0]) - 1)
+            if all(board[x+i][y] == '.' for i in range(ship_size)):
+                for i in range(ship_size):
+                    board[x+i][y] = 'S'
+                break
