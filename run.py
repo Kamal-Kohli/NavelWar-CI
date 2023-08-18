@@ -181,13 +181,13 @@ def play_battleship(size, uname):
         if is_game_over(p_board):
             print("Game over! The CPU sank all your ships. You lose!")
             feedback = get_feedback()
-            print("Thank you for your feedback!")
+            print("Thank you for playing!")
             break
 
     if remaining_shots == 0:
         print("Out of shots! The battle is a draw.")
         feedback = get_feedback()
-        print("Thank you for playing!")
+        print("Thank you for your feedback!")
 
 
 if __name__ == "__main__":
