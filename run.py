@@ -38,3 +38,23 @@ Now you're ready for the Naval war Captain. GOOD LUCK!
 # Function to initialize the game boards
 def init_board(size):
     return [['.' for _ in range(size)] for _ in range(size)]
+
+# Function to print the game boards
+def print_boards(player, computer, size, hide_comp=True):
+    """
+    Prints the player and computer game boards side by side.
+
+    :param player: The player's game board.
+    :param computer: The computer's game board.
+    :param size: The size of the game board.
+    :param hide_comp: If True, hides the computer's ship positions.
+    """
+    col_labels = " ".join(chr(65 + i) for i in range(size))
+    print(f"{username} Board:      CPU Board:")
+    print("   " + col_labels + "   " + "   " + col_labels)
+    for i in range(size):
+        comp_row = [
+            '.' if c == 'S' else c for c in computer[i]
+        ] if hide_comp else computer[i]
+        row_str = f"{i}  {' '.join(player[i])}   {i}  {' '.join(comp_row)}"
+        print(row_str)
