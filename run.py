@@ -127,6 +127,22 @@ def player_turn(comp_board, size):
             print("Invalid target, try again.")
 
 
+# Function for the computer's turn
+def comp_turn(player_board, size):
+    while True:
+        x = random.randint(0, size - 1)
+        y = random.randint(0, size - 1)
+        if player_board[x][y] != 'X' and player_board[x][y] != '#':
+            if player_board[x][y] == 'S':
+                print("CPU hit at", chr(65 + x) + str(y))
+                player_board[x][y] = 'X'
+            else:
+                print("CPU missed at", chr(65 + x) + str(y))
+                player_board[x][y] = '#'
+            break
+
+
+
 # Function to play the Battleship game
 def play_battleship(size, uname):
     p_board = init_board(size)
