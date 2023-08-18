@@ -60,6 +60,11 @@ def print_boards(player, computer, size, hide_comp=True):
         print(row_str)
 
 
+# Function to check if the game is over
+def is_game_over(board):
+    return all(all(cell != 'S' for cell in row) for row in board)
+
+
 # Function to place ships on the board
 def place_ship(board, ship_size):
     """
