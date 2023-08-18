@@ -39,6 +39,7 @@ Now you're ready for the Naval war Captain. GOOD LUCK!
 def init_board(size):
     return [['.' for _ in range(size)] for _ in range(size)]
 
+
 # Function to print the game boards
 def print_boards(player, computer, size, hide_comp=True):
     """
@@ -58,7 +59,7 @@ def print_boards(player, computer, size, hide_comp=True):
         ] if hide_comp else computer[i]
         row_str = f"{i}  {' '.join(player[i])}   {i}  {' '.join(comp_row)}"
         print(row_str)
-        
+
 
 # Function to check if the game is over
 def is_game_over(board):
@@ -147,7 +148,6 @@ def get_feedback():
     return input("Provide your feedback on the game: ")
 
 
-
 # Function to play the Battleship game
 def play_battleship(size, uname):
     p_board = init_board(size)
@@ -202,3 +202,4 @@ if __name__ == "__main__":
                 break
         else:
             print("Invalid grid size. Enter a value between 5 and 10.")
+            
