@@ -33,3 +33,8 @@ INSTRUCTIONS!!!
 4. Player will have limited shots as per grid size.
 Now you're ready for the Naval war Captain. GOOD LUCK!
 """
+
+
+# Function to initialize the game boards
+def init_board(size):
+    return [['.' for _ in range(size)] for _ in range(size)]
