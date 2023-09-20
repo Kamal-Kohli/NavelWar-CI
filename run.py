@@ -6,7 +6,7 @@ Legend:
 4. "x" = Ship Hit!
 
 Battleship:
-A. grid = 10x10Custom grids between min 5 to max 10.
+A. grid = Custom grids between min 5 to max 10.
 B. 5 ships of variable length were randomly placed.
 C. Every hit or miss shot will show up in the grid.
 D. If all ships are unearthed before using up all bullets,
@@ -16,14 +16,6 @@ E. You can choose a row and column such as A1, B1 to indicate where to shoot.
 
 import random
 
-# Constants and globals
-"""EMPTY = ''' . '''
-SHIP = ''' S '''
-HIT = ''' X  '''
-MISS = ''' # '''
-GRID_SIZE = ''' Between 5 to 10 '''
-SHIPS = [5, 3, 3, 2, 2]  # Variation sizes of ships
-NUM_SHIPS = 5"""
 
 GAME_INSTRUCTIONS = """
 INSTRUCTIONS!!!
@@ -61,11 +53,6 @@ def print_boards(player, computer, size, hide_comp=True):
         print(row_str)
 
 
-# Function to check if the game is over
-def is_game_over(board):
-    return all(all(cell != 'S' for cell in row) for row in board)
-
-
 # Function to place ships on the board
 def place_ship(board, ship_size):
     """
@@ -90,6 +77,11 @@ def place_ship(board, ship_size):
                 for i in range(ship_size):
                     board[x+i][y] = 'S'
                 break
+
+
+# Function to check if the game is over
+def is_game_over(board):
+    return all(all(cell != 'S' for cell in row) for row in board)
 
 
 # Function to convert player input to board coordinates
@@ -160,7 +152,7 @@ def play_battleship(size, uname):
     total_shots = 22 + (size - 5) * 6
     # Maximum shots based on grid size
     remaining_shots = total_shots
-    print(f"Welcome {uname} to Battleship war!")
+    print(f"Welcome Captain {uname} to Naval War!")
     print(GAME_INSTRUCTIONS)
     print_boards(p_board, c_board, size, hide_comp=True)
     # Decrease remaining shots after each player turn
@@ -187,7 +179,7 @@ def play_battleship(size, uname):
     if remaining_shots == 0:
         print("Out of shots! The battle is a draw.")
         feedback = get_feedback()
-        print("Thank you for your feedback!")
+        print("Thank you for playing!")
 
 
 if __name__ == "__main__":
